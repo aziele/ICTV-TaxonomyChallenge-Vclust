@@ -39,9 +39,9 @@ Out of 59,907 challenge contigs, 47,264 were taxonomically classified down to sp
 | **Family**    | 2 | 1 |
 | Unclassified    | 12,643 | - |
 
+The distribution of gANI values for the classified challenge contigs is shown below:
 
 <img src="./images/histogram_gani.png" alt="Distribution of gani values">
-Figure 1. Distribution of Global Average Nucleotide Identity (gANI) values for challenge contigs classified by Vclust.
 
 ## 3. Reproducing the results
 
@@ -134,7 +134,8 @@ vclust align -i contigs.fna --filter fltr.txt --out-gani 0.7 -o ani.tsv --thread
 Combine ANI values and taxonomic data to generate a classification results file:
 
 ```bash
-python create_results_tsv.py --input-ani ani.tsv --input-taxonomy db/VMR_MSL39.v4_20241106.tsv \
+python create_results_tsv.py --input-ani ani.tsv \
+--input-taxonomy db/VMR_MSL39.v4_20241106.tsv \
 --output-tsv vclust_results.tsv
 ```
 
