@@ -52,7 +52,7 @@ Reproducing the results takes ~10 minutes on a standard workstation. In our test
 To run Vclust and reproduce results, ensure the following requirements:
 
 * **Operating system**: Linux or macOS
-* **RAM memrory**: At least 16 GB
+* **RAM memory**: At least 16 GB
 * **Hard disk space**: Approximately 3 GB
 * **Python version**: 3.8 or later
 * **Python dependencies**:
