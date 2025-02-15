@@ -1,8 +1,8 @@
 # ICTV-TaxonomyChallenge-Vclust
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14543274.svg)](https://doi.org/10.5281/zenodo.14543274)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14537502.svg)](https://doi.org/10.5281/zenodo.14537502)
 
-This repository contains the results and reproducibility code for applying [Vclust](https://github.com/refresh-bio/vclust) to the [ICTV Taxonomy Challenge](https://ictv-vbeg.github.io/ICTV-TaxonomyChallenge/). Vclust classified ~79% of the challenge contigs to species or genus ranks based on nucleotide sequence identity. Contigs with nucleotide identities below the genus-level threshold were excluded, as Vclust is designed to provide taxonomic annotations only down to the genus and species ranks. Excluded contigs were not assigned speculative higher taxonomic levels.
+This repository contains the results and reproducibility code for applying [Vclust](https://github.com/refresh-bio/vclust) to the [ICTV Taxonomy Challenge](https://ictv-vbeg.github.io/ICTV-TaxonomyChallenge/). Vclust classified ~79% of the challenge contigs to species or genus ranks based on nucleotide sequence identity. Contigs with nucleotide identities below the genus-level threshold were excluded, as Vclust is designed to provide taxonomic annotations only at the genus and species ranks. Excluded contigs were not assigned speculative higher taxonomic levels.
 
 Results are available in **[results/vclust_results.tsv](./results/vclust_results.tsv)**.
 
@@ -54,9 +54,8 @@ Reproducing the results takes ~10 minutes on a standard workstation. In our test
 To run Vclust and reproduce results, ensure the following requirements:
 
 * **Operating system**: Linux or macOS
-* **RAM memory**: At least 16 GB
-* **Hard disk space**: Approximately 3 GB
 * **Python version**: 3.8 or later
+* **Hardware**: At least 16 GB RAM
 * **Python dependencies**:
    - `vclust==1.3.0`
    - `numpy`
@@ -92,7 +91,7 @@ Install Vclust and required Python dependencies:
 pip install vclust==1.3.0 numpy pandas
 ```
 
-#### 3.2.4. Download and extract the ICTV Challenge dataset
+#### 3.2.4. Download and extract the Challenge dataset
 
 Download and extract the ICTV Taxonomy Challenge dataset:
 
@@ -104,12 +103,11 @@ rm dataset_challenge.tar.gz
 
 #### 3.2.5. Prepare input for Vclust
 
-Download the reference genome dataset and combine it with the challenge contigs into a single multifasta file:
+Download the reference dataset and combine it with the challenge contigs into a single multifasta file:
 
 ```bash
 wget https://afproject.org/files/VMR_MSL39.v4_20241106.fna.gz
-gunzip -c VMR_MSL39.v4_20241106.fna.gz > contigs.fna
-rm VMR_MSL39.v4_20241106.fna.gz
+gunzip VMR_MSL39.v4_20241106.fna.gz > contigs.fna
 find dataset_challenge -name 'ICTVTaxoChallenge*.fasta' -print0 | xargs -0 cat >> contigs.fna
 
 grep -c '^>' contigs.fna
@@ -150,7 +148,7 @@ Verify the integrity of the results file by comparing its MD5 checksum:
 ```bash
 md5sum vclust_results.tsv
 cat results/vclust_results.tsv.md5sum
-# Expected MD5 hash: 01e89c5d5fcd2b4c958df2d67c834ed6
+# Expected MD5 hash: 06accc341d369d79080a7874f88ef7c2
 ```
 
 #### 3.2.9. Clean up temporary files
@@ -159,6 +157,7 @@ Remove unnecessary intermediate files:
 
 ```bash
 rm contigs.fna fltr.txt ani.ids.tsv ani.tsv
+rm -r dataset_challenge
 ```
 
 ## 4. License
