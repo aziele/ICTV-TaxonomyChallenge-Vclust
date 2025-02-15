@@ -1,6 +1,6 @@
 # ICTV-TaxonomyChallenge-Vclust
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14537502.svg)](https://doi.org/10.5281/zenodo.14537502)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14875039.svg)](https://doi.org/10.5281/zenodo.14875039)
 
 This repository contains the results and reproducibility code for applying [Vclust](https://github.com/refresh-bio/vclust) to the [ICTV Taxonomy Challenge](https://ictv-vbeg.github.io/ICTV-TaxonomyChallenge/). Vclust classified ~79% of the challenge contigs to species or genus ranks based on nucleotide sequence identity. Contigs with nucleotide identities below the genus-level threshold were excluded, as Vclust is designed to provide taxonomic annotations only at the genus and species ranks. Excluded contigs were not assigned speculative higher taxonomic levels.
 
